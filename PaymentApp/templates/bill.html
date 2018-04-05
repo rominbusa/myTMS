@@ -1,0 +1,17 @@
+<!-- bill.html -->
+
+{% extends 'home.html' %}
+<div class="agile-login">
+{% block content %}
+		<div class="wrapper">
+        <h1 style="color:chocolate">Sucessfully Booked Your Tour. <br>Your Bill: </h1>
+        <h3 style="color:white">username:{{ request.session.full_name }}</h3>
+        <h3 style="color:white">source city:{{ request.session.source }}</h3>
+        <h3 style="color:white">destination city:{{ request.session.destination }}</h3>
+        <h3 style="color:white">date of journy:{{ request.session.date }}</h3>
+        <h3 style="color:white">Total Amount:{{ request.session.total_amount }}</h3>
+        <h1 style="color:blueviolet">Thanks for using.<br>Visit again</h1>
+        </div>
+		<br>
+{% endblock %}
+</div>

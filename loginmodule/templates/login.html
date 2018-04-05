@@ -1,0 +1,22 @@
+<!-- login.html -->
+
+{% extends 'home.html' %}
+{% block content %}
+<div class="agile-login">
+		<div class="wrapper">
+			<h2>Login</h2>
+			<div class="w3ls-form">
+				<form action="/loginmodule/auth/" method="post">{% csrf_token %}
+					<label>Username</label>
+					<input type="text" name="username" placeholder="Username" required/>
+					<label>Password</label>
+					<input type="password" name="password" placeholder="Password" required />
+                    <input type="submit" value="Log In" />
+				<a href="/SignupApp/signup/" class="pass">Don't have account?SignUp</a>
+				</form>
+			</div>
+            <br><h3 style="color: orangered"> {{ error }}</h3>
+        </div>
+		<br>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+<!-- payment_mode.html -->
+
+{% extends 'home.html' %}
+<div class="agile-login">
+{% block content %}
+		<div class="wrapper">
+         {% if request.session.mode == "Net banking" %}
+                <h2>Net banking</h2>
+			    <div class="w3ls-form">
+                <form action="/PaymentApp/bill/" method="post">{% csrf_token %}
+                    <label>Select bank</label>
+                    <select name="bank">
+                        <option>State Bank Of India</option>
+                        <option>ICICI Bank</option>
+                        <option>HDFC Bank</option>
+                        <option>AXIS Bank</option>
+                        <option>Indian Bank</option>
+                        <option>Federal Bank</option>
+                        <option>Bank of baroda</option>
+                        <option>IDBI Bank</option>
+                    </select>
+                     <label>Username</label>
+                     <input type="text" name="username" required>
+					 <label>password</label>
+                     <input type="password" name="password" required>
+                     <input type="submit" value="Pay now" />
+				</form>
+                </div>
+         {% else %}
+                {% if request.session.mode == "Credit card" %}
+			        <h2>Credit card info</h2>
+                {% else %}
+                    <h2>Debit card info</h2>
+                {% endif %}
+             <div class="w3ls-form">
+				<form action="/PaymentApp/bill/" method="post">{% csrf_token %}
+                <label>name on card</label>
+
+                <input type="text" name="name_on_card">
+					<label>Card number</label>
+                <input type="text" name="cardno" placeholder="xxxx-xxxx-xxxx-xxxx">
+                <label>Expiration</label>
+                <input type="month" name="expired_date">
+                <label>CVC number</label>
+                <input type="text" name="cvcno" placeholder="xxx" maxlength="3">
+                <input type="submit" value="pay now" />
+                </form>
+             </div>
+         {% endif %}
+        </div>
+		<br>
+ {% endblock %}
+</div>

@@ -1,0 +1,22 @@
+<!-- amount.html -->
+
+{% extends 'home.html' %}
+{% block content %}
+    <label> <h1 style="color: red" align="center">You Have to Pay {{ request.session.total_amount }}</h1></label>
+		<div class="wrapper">
+			<h2>Payment Mode Selection</h2>
+			<div class="w3ls-form">
+				<form action="/PaymentApp/makepayment/" method="post">{% csrf_token %}
+                    <label>Select Payment mode</label>
+                    <select name="mode">
+                        <option>Credit card</option>
+                        <option>Net banking</option>
+                        <option>Debit Card</option>
+                    </select>
+                    <input type="submit" value="Confirm Booking" />
+				</form>
+            </div>
+        </div>
+		<br>
+    </div>
+{% endblock %}

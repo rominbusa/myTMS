@@ -1,0 +1,51 @@
+<!-- home.html -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static '/loginmodule/css/font-awesome.css' %}">
+	<link rel="stylesheet" href="{% static '/loginmodule/css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/loginmodule/css/grid.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="navigation">
+            <img src="{% static '/loginmodule/images/logo.png'%}" class="logo" />
+            <ul class="menu">
+                <li><a href="/loginmodule/home/">Home</a></li>
+                {% if request.user.is_authenticated %}
+                    <li><a href="/loginmodule/logout/">Logout</a></li>
+                    {% if request.session.temp != "abc" %}
+                        <li><a href="/BookTicketApp/booking_history/">Booking History</a> </li>
+                    {% else %}
+                        <li><a href="/BookTicketApp/book_ticket/">Book Tour</a></li>
+                        {% endif %}
+                {% else %}
+                    <li><a href="/loginmodule/login/">Login</a></li>
+                    <li><a href="/SignupApp/signup/">SignUp</a></li>
+                {% endif %}
+                    <li><a href="/loginmodule/aboutus/">AboutUs</a></li>
+            </ul>
+                {% if request.user.is_authenticated %}
+                     <br><h1 style="color:silver " align="right">Welcome  {{ request.session.full_name }}</h1>
+                {% endif %}
+        </div>
+    </header>
+    {% block content %}
+        <div class="logo1">
+        <u style="color:skyblue"><h1 style="color:blueviolet" align="center">INFORMATION ABOUT PACKAGES</h1></u>
+            <br>
+            <table border="1" style="color: #00b6f1" align="center">
+                <tr><th>Package Name</th><th>Amount</th></tr>
+                <tr><td>Executive package</td><td>1000</td></tr>
+                <tr><td>Royal package</td><td>750</td></tr>
+                <tr><td>Marvel package</td><td>500</td></tr>
+            </table>
+        </div>
+        <a href="/BookTicketApp/book_ticket/"><u style="color:seashell"><h1 style="color:seashell" align="center">Book tour</h1></u></a>
+    {% endblock %}
+</body>
+</html>

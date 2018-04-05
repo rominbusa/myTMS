@@ -1,0 +1,29 @@
+<!-- signup.html -->
+
+{% extends 'home.html' %}
+<div class="agile-login">
+{% block content %}
+		<div class="wrapper">
+			<h2>SignUp</h2>
+			<div class="w3ls-form">
+				<form action="/SignupApp/adduserinfo/" method="post">{% csrf_token %}
+					<label>Username</label>
+					<input type="text" name="username" placeholder="Username" required/>
+					<label>Password</label>
+					<input type="password" name="password" placeholder="Password" required />
+                    <p style="color:Red">{{error1}}</p>
+                    <label>Confirm Password</label>
+					<input type="password" name="cpassword" placeholder="Password" required />
+                    <p style="color:Red">{{error2}}</p>
+                    <label>Email Id</label>
+					<input type="email" name="emailid" placeholder="Email" required />
+                    <label>Mobile No</label>
+					<input type="text" name="mobileno" placeholder="Mobile Number" required maxlength="10"/>
+                    <input type="submit" value="SignUp" />
+				    <a href="/loginmodule/login/" class="pass">Already have an account?Login</a>
+				</form>
+            </div>
+        </div>
+		<br>
+ {% endblock %}
+</div>

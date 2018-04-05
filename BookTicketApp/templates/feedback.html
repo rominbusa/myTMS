@@ -1,0 +1,20 @@
+<!-- login.html -->
+
+{% extends 'home.html' %}
+{% block content %}
+<div class="agile-login">
+		<div class="wrapper">
+			<h2>Feedback</h2>
+			<div class="w3ls-form">
+				<form action="/BookTicketApp/feedback/" method="post">{% csrf_token %}
+					<label>Email</label>
+					<input type="email" name="email" value="{{ request.user.email }}" readonly/>
+					<label>feedback</label>
+					<input type="text" name="feedback" placeholder="Enter your comments" maxlength="200"/>
+                    <input type="submit" value="Submit" />
+				</form>
+			</div>
+        </div>
+		<br>
+</div>
+{% endblock %}
