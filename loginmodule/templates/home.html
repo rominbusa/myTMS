@@ -40,9 +40,9 @@
             <br>
             <table border="1" style="color: #00b6f1" align="center">
                 <tr><th>Package Name</th><th>Amount</th></tr>
-                <tr><td>Executive package</td><td>1000</td></tr>
-                <tr><td>Royal package</td><td>750</td></tr>
-                <tr><td>Marvel package</td><td>500</td></tr>
+                {% for pack in packs %}
+                    <tr><td>{{ pack.pname }}</td><td>{{ pack.amount }}</td></tr>
+                {% endfor %}
             </table>
         </div>
         <a href="/BookTicketApp/book_ticket/"><u style="color:seashell"><h1 style="color:seashell" align="center">Book tour</h1></u></a>

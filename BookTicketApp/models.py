@@ -5,7 +5,7 @@ from SignupApp.models import TMSUser
 
 class PackageDetails(models.Model):
 	pname = models.CharField(max_length=20,primary_key=True)
-	amount = models.PositiveIntegerField()
+	amount = models.CharField(max_length=5)
 
 class TMSBooking(models.Model):
 	booking_id=models.CharField(max_length=6,primary_key=True)
@@ -14,7 +14,8 @@ class TMSBooking(models.Model):
 	destination = models.CharField(max_length=20)
 	package = models.ForeignKey(PackageDetails,on_delete=models.CASCADE,null=True)
 	departure_date = models.DateField()
-	no_of_person = models.IntegerField(default=0)
+	no_of_person = models.PositiveIntegerField(default=0)
+	amount=models.PositiveIntegerField()
 
 class feedback(models.Model):
 	tmsuser = models.ForeignKey(TMSUser, on_delete=models.CASCADE, null=True)

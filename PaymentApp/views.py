@@ -13,13 +13,7 @@ from django.utils.crypto import get_random_string
 
 @login_required
 def CalculateAmount(request):
-    pack = request.session.get('attr1')
-    nop=request.session.get('nop')
-    c = {}
-    amt=PackageDetails.objects.get(pname=pack).amount
-    request.session['total_amount']=int(amt)*int(nop)
-    c['bookings'] = TMSBooking.objects.filter(tmsuser=request.user.tmsuser)
-    return render(request,'amount.html',c)
+    return render(request,'amount.html')
 
 @login_required
 def makepayment(request):

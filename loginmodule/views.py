@@ -4,11 +4,13 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.template.context_processors import csrf
+from BookTicketApp.models import PackageDetails
 
 def home(request):
 	c={}
 	c.update(csrf(request))
 	request.session['temp'] = "xyz"
+	c['packs'] = PackageDetails.objects.all()
 	return render(request,'home.html',c)
 
 def login(request):
